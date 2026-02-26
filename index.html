@@ -14,62 +14,106 @@
   />
 
   <style>
+    :root {
+      --bg-main: #f7f3e9;
+      --bg-card: #ffffff;
+      --text-main: #3a2f1d;
+      --border-light: #e5decf;
+      --accent-gold: #d4a017;
+      --accent-gold-dark: #b88a12;
+      --accent-charcoal: #333333;
+      --accent-charcoal-dark: #1f1f1f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
-      color: #222;
-      background: #fafafa;
+      color: var(--text-main);
+      background: var(--bg-main);
     }
+
     header {
-      background: #1f2933;
+      background: #2b2114;
       color: #fff;
-      padding: 1.5rem 1rem;
+      padding: 1.75rem 1rem;
       text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     }
+
     header h1 {
-      margin: 0 0 0.25rem;
-      font-size: 1.8rem;
+      margin: 0 0 0.35rem;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
     }
+
     header p {
-      margin: 0;
-      opacity: 0.85;
+      margin: 0.1rem 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
     }
+
     main {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2.4fr);
       gap: 1.5rem;
       padding: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    @media (max-width: 900px) {
+
+    @media (max-width: 960px) {
       main {
         grid-template-columns: 1fr;
       }
     }
+
     section {
-      background: #fff;
-      border-radius: 8px;
+      background: var(--bg-card);
+      border-radius: 10px;
       padding: 1rem 1.25rem;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
       margin-bottom: 1rem;
+      border: 1px solid var(--border-light);
     }
+
     h2 {
       margin-top: 0;
       font-size: 1.3rem;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 2px solid var(--accent-gold);
       padding-bottom: 0.35rem;
+      margin-bottom: 0.6rem;
     }
+
     h3 {
       margin-bottom: 0.25rem;
       font-size: 1.05rem;
+      margin-top: 0.75rem;
     }
+
     ul {
       padding-left: 1.1rem;
       margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
     }
+
     li {
       margin-bottom: 0.25rem;
     }
+
+    a {
+      color: #1f4f8f;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     .tag {
       display: inline-block;
       padding: 0.1rem 0.4rem;
@@ -81,6 +125,7 @@
       background: #e5e7eb;
       color: #374151;
     }
+
     .cluster {
       display: inline-block;
       padding: 0.1rem 0.4rem;
@@ -89,6 +134,7 @@
       margin-left: 0.25rem;
       color: #fff;
     }
+
     .cluster-downtown { background: #2563eb; }
     .cluster-midtown { background: #16a34a; }
     .cluster-12south { background: #f97316; }
@@ -97,20 +143,23 @@
     #map {
       width: 100%;
       height: 600px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
+      border: 1px solid var(--border-light);
     }
 
     .legend {
       font-size: 0.8rem;
       margin-top: 0.75rem;
     }
+
     .legend span {
       display: inline-flex;
       align-items: center;
       margin-right: 0.75rem;
       margin-bottom: 0.25rem;
     }
+
     .legend i {
       width: 10px;
       height: 10px;
@@ -118,6 +167,7 @@
       display: inline-block;
       margin-right: 0.25rem;
     }
+
     .legend .downtown { background: #2563eb; }
     .legend .midtown { background: #16a34a; }
     .legend .south { background: #f97316; }
@@ -130,9 +180,11 @@
     .day-block {
       margin-bottom: 0.75rem;
     }
+
     .day-block h3 {
       margin-top: 0.5rem;
     }
+
     .pill {
       display: inline-block;
       padding: 0.1rem 0.5rem;
@@ -142,12 +194,59 @@
       margin-right: 0.25rem;
       margin-bottom: 0.25rem;
     }
+
+    .btn {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 0.15rem 0.25rem 0.15rem 0;
+      white-space: nowrap;
+    }
+
+    .btn-website {
+      background: var(--accent-gold);
+      color: #ffffff;
+    }
+
+    .btn-website:hover {
+      background: var(--accent-gold-dark);
+      text-decoration: none;
+    }
+
+    .btn-map {
+      background: var(--accent-charcoal);
+      color: #ffffff;
+    }
+
+    .btn-map:hover {
+      background: var(--accent-charcoal-dark);
+      text-decoration: none;
+    }
+
+    .link-block {
+      margin-top: 0.15rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .popup-links {
+      margin-top: 0.25rem;
+    }
+
+    .popup-links a {
+      display: inline-block;
+      margin: 0.1rem 0.1rem 0.1rem 0;
+    }
   </style>
 </head>
 <body>
 <header>
   <h1>Nashville Long Weekend Guide</h1>
-  <p>May 1–4, 2026 • Staying at Embassy Suites Nashville</p>
+  <p>May 1–4, 2026 • Embassy Suites by Hilton Nashville Downtown</p>
 </header>
 
 <main>
@@ -159,7 +258,12 @@
         A long weekend in Nashville during early May means peak music season, warm weather,
         and a perfect mix of classic venues, chef-driven dining, and walkable neighborhoods.
         This guide highlights must-see attractions, concerts, regional food, and restaurants—
-        all mapped for quick orientation from your base at <strong>Embassy Suites by Hilton Nashville Downtown</strong>.
+        all mapped for quick orientation from your base at
+        <strong>
+          <a href="https://www.hilton.com/en/hotels/bnaemes-embassy-suites-nashville-downtown/" target="_blank">
+            Embassy Suites by Hilton Nashville Downtown
+          </a>
+        </strong>.
       </p>
     </section>
 
@@ -168,78 +272,326 @@
 
       <h3>Music & Culture</h3>
       <ul>
-        <li><strong>Ryman Auditorium</strong> <span class="tag">Tour</span> <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>Country Music Hall of Fame & Museum</strong> <span class="tag">Museum</span> <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>RCA Studio B</strong> <span class="tag">Studio Tour</span> <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>Johnny Cash Museum</strong> <span class="tag">Museum</span> <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>Grand Ole Opry House</strong> <span class="tag">Show</span> <span class="cluster cluster-outskirts">Outskirts</span></li>
+        <li>
+          <strong>
+            <a href="https://www.ryman.com" target="_blank">Ryman Auditorium</a>
+          </strong>
+          <span class="tag">Tour</span> <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Ryman+Auditorium+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.countrymusichalloffame.org" target="_blank">Country Music Hall of Fame &amp; Museum</a>
+          </strong>
+          <span class="tag">Museum</span> <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Country+Music+Hall+of+Fame+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://studiob.org" target="_blank">RCA Studio B</a>
+          </strong>
+          <span class="tag">Studio Tour</span> <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=RCA+Studio+B+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.johnnycashmuseum.com" target="_blank">Johnny Cash Museum</a>
+          </strong>
+          <span class="tag">Museum</span> <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Johnny+Cash+Museum+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.opry.com" target="_blank">Grand Ole Opry House</a>
+          </strong>
+          <span class="tag">Show</span> <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Grand+Ole+Opry+House+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
 
-      <h3>History & Landmarks</h3>
+      <h3>History &amp; Landmarks</h3>
       <ul>
-        <li><strong>The Parthenon at Centennial Park</strong> <span class="tag">Landmark</span> <span class="cluster cluster-midtown">Midtown</span></li>
-        <li><strong>Belle Meade Historic Site & Winery</strong> <span class="tag">Historic</span> <span class="cluster cluster-outskirts">Outskirts</span></li>
-        <li><strong>Andrew Jackson’s Hermitage</strong> <span class="tag">Historic</span> <span class="cluster cluster-outskirts">Outskirts</span></li>
+        <li>
+          <strong>
+            <a href="https://www.nashville.gov/departments/parks-and-recreation/parthenon" target="_blank">
+              The Parthenon at Centennial Park
+            </a>
+          </strong>
+          <span class="tag">Landmark</span> <span class="cluster cluster-midtown">Midtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=The+Parthenon+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://bellemeadeplantation.com" target="_blank">Belle Meade Historic Site &amp; Winery</a>
+          </strong>
+          <span class="tag">Historic</span> <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Belle+Meade+Historic+Site+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://thehermitage.com" target="_blank">Andrew Jackson’s Hermitage</a>
+          </strong>
+          <span class="tag">Historic</span> <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Andrew+Jackson%27s+Hermitage+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
 
-      <h3>Outdoors & Scenic</h3>
+      <h3>Outdoors &amp; Scenic</h3>
       <ul>
-        <li><strong>Cheekwood Estate & Gardens</strong> <span class="tag">Gardens</span> <span class="cluster cluster-outskirts">Outskirts</span></li>
-        <li><strong>Riverfront Park</strong> <span class="tag">Park</span> <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>Radnor Lake State Park</strong> <span class="tag">Hiking</span> <span class="cluster cluster-outskirts">Outskirts</span></li>
+        <li>
+          <strong>
+            <a href="https://cheekwood.org" target="_blank">Cheekwood Estate &amp; Gardens</a>
+          </strong>
+          <span class="tag">Gardens</span> <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Cheekwood+Estate+and+Gardens+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.nashville.gov/departments/parks-and-recreation/parks/riverfront-park" target="_blank">
+              Riverfront Park
+            </a>
+          </strong>
+          <span class="tag">Park</span> <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Riverfront+Park+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://tnstateparks.com/parks/radnor-lake" target="_blank">Radnor Lake State Park</a>
+          </strong>
+          <span class="tag">Hiking</span> <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Radnor+Lake+State+Park" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
     </section>
 
     <section>
-      <h2>Events & Concerts (Weekend Highlights)</h2>
+      <h2>Events &amp; Concerts (Weekend Highlights)</h2>
       <ul>
-        <li><strong>Grand Ole Opry</strong> – Classic multi-artist country show at the Opry House <span class="tag">Friday</span></li>
-        <li><strong>Ani DiFranco</strong> – Live at the Ryman Auditorium <span class="tag">Friday</span></li>
-        <li><strong>Bailey Zimmerman</strong> – Ascend Amphitheater, riverfront outdoor show <span class="tag">Friday/Saturday</span></li>
-        <li><strong>Nashville Symphony</strong> – “The Miraculous Mandarin & Music of Bates” at Schermerhorn Symphony Center <span class="tag">Friday</span></li>
-        <li><strong>Florence + The Machine</strong> – Bridgestone Arena <span class="tag">Saturday</span></li>
-        <li><strong>Local clubs & comedy</strong> – Zanies, The Basement, 3rd & Lindsley throughout the weekend</li>
+        <li>
+          <strong>
+            <a href="https://www.opry.com" target="_blank">Grand Ole Opry</a>
+          </strong>
+          – Classic multi-artist country show at the Opry House
+          <span class="tag">Friday</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Grand+Ole+Opry+House+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.ryman.com" target="_blank">Ani DiFranco at the Ryman Auditorium</a>
+          </strong>
+          <span class="tag">Friday</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Ryman+Auditorium+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.ascendamphitheater.com" target="_blank">Bailey Zimmerman at Ascend Amphitheater</a>
+          </strong>
+          <span class="tag">Friday/Saturday</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Ascend+Amphitheater+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.nashvillesymphony.org" target="_blank">
+              Nashville Symphony – “The Miraculous Mandarin &amp; Music of Bates”
+            </a>
+          </strong>
+          at Schermerhorn Symphony Center
+          <span class="tag">Friday</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Schermerhorn+Symphony+Center+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://www.bridgestonearena.com" target="_blank">Florence + The Machine at Bridgestone Arena</a>
+          </strong>
+          <span class="tag">Saturday</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Bridgestone+Arena+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>Local clubs &amp; comedy</strong> – 
+          <a href="https://www.zanies.com" target="_blank">Zanies</a>,
+          <a href="https://thebasementnashville.com" target="_blank">The Basement</a>,
+          <a href="https://3rdandlindsley.com" target="_blank">3rd &amp; Lindsley</a>
+          throughout the weekend.
+        </li>
       </ul>
     </section>
 
     <section>
-      <h2>Regional Food & Restaurants</h2>
+      <h2>Regional Food &amp; Restaurants</h2>
 
       <h3>Must‑Try Regional Dishes</h3>
       <ul>
         <li><strong>Hot Chicken</strong> – Nashville’s signature spicy fried chicken.</li>
-        <li><strong>Meat & Three</strong> – One protein, three Southern sides.</li>
+        <li><strong>Meat &amp; Three</strong> – One protein, three Southern sides.</li>
         <li><strong>Nashville‑style BBQ</strong> – Pork-forward, tangy sauces.</li>
-        <li><strong>Biscuits & Gravy</strong> – Classic Southern breakfast.</li>
+        <li><strong>Biscuits &amp; Gravy</strong> – Classic Southern breakfast.</li>
         <li><strong>Goo Goo Cluster</strong> – Historic Nashville candy.</li>
       </ul>
 
       <h3>Hot Chicken</h3>
       <ul>
-        <li><strong>Prince’s Hot Chicken</strong> <span class="cluster cluster-outskirts">Outskirts</span></li>
-        <li><strong>Hattie B’s Hot Chicken</strong> (Midtown) <span class="cluster cluster-midtown">Midtown</span></li>
+        <li>
+          <strong>
+            <a href="https://princeshotchicken.com" target="_blank">Prince’s Hot Chicken</a>
+          </strong>
+          <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Prince%27s+Hot+Chicken+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://hattieb.com" target="_blank">Hattie B’s Hot Chicken (Midtown)</a>
+          </strong>
+          <span class="cluster cluster-midtown">Midtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Hattie+B%27s+Hot+Chicken+Midtown+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
 
-      <h3>Chef‑Driven & Chef’s‑Table Experiences</h3>
+      <h3>Chef‑Driven &amp; Chef’s‑Table Experiences</h3>
       <ul>
-        <li><strong>The Catbird Seat</strong> – Chef’s counter tasting menu <span class="cluster cluster-midtown">Midtown</span></li>
-        <li><strong>Yolan</strong> – Upscale Italian by Tony Mantuano <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>Kayne Prime</strong> – Modern steakhouse <span class="cluster cluster-midtown">Midtown</span></li>
-        <li><strong>Husk</strong> – Modern Southern in a historic mansion <span class="cluster cluster-downtown">Downtown</span></li>
-        <li><strong>Locust</strong> – Minimalist, inventive tasting menu <span class="cluster cluster-12south">12South/Belmont</span></li>
-        <li><strong>Bastion</strong> – Creative small tasting menu <span class="cluster cluster-12south">12South/Belmont</span></li>
+        <li>
+          <strong>
+            <a href="https://thecatbirdseatrestaurant.com" target="_blank">The Catbird Seat</a>
+          </strong>
+          – Chef’s counter tasting menu
+          <span class="cluster cluster-midtown">Midtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=The+Catbird+Seat+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://yolannashville.com" target="_blank">Yolan</a>
+          </strong>
+          – Upscale Italian by Tony Mantuano
+          <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Yolan+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://kayneprime.com" target="_blank">Kayne Prime</a>
+          </strong>
+          – Modern steakhouse
+          <span class="cluster cluster-midtown">Midtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Kayne+Prime+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://husknashville.com" target="_blank">Husk</a>
+          </strong>
+          – Modern Southern in a historic mansion
+          <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Husk+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://locustnashville.com" target="_blank">Locust</a>
+          </strong>
+          – Minimalist, inventive tasting menu
+          <span class="cluster cluster-12south">12South/Belmont</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Locust+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://bastionnashville.com" target="_blank">Bastion</a>
+          </strong>
+          – Creative small tasting menu
+          <span class="cluster cluster-12south">12South/Belmont</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Bastion+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
 
-      <h3>Southern Comfort & Classics</h3>
+      <h3>Southern Comfort &amp; Classics</h3>
       <ul>
-        <li><strong>The Loveless Café</strong> – Legendary biscuits <span class="cluster cluster-outskirts">Outskirts</span></li>
-        <li><strong>Arnold’s Country Kitchen</strong> – Meat & three <span class="cluster cluster-downtown">Downtown</span></li>
+        <li>
+          <strong>
+            <a href="https://lovelesscafe.com" target="_blank">The Loveless Café</a>
+          </strong>
+          – Legendary biscuits
+          <span class="cluster cluster-outskirts">Outskirts</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Loveless+Cafe+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://arnoldscountrykitchen.com" target="_blank">Arnold’s Country Kitchen</a>
+          </strong>
+          – Meat &amp; three
+          <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Arnold%27s+Country+Kitchen+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
 
-      <h3>Cocktails & Nightlife</h3>
+      <h3>Cocktails &amp; Nightlife</h3>
       <ul>
-        <li><strong>The Patterson House</strong> – Speakeasy cocktails <span class="cluster cluster-midtown">Midtown</span></li>
-        <li><strong>Skull’s Rainbow Room</strong> – Supper club with jazz & burlesque <span class="cluster cluster-downtown">Downtown</span></li>
+        <li>
+          <strong>
+            <a href="https://thepattersonnashville.com" target="_blank">The Patterson House</a>
+          </strong>
+          – Speakeasy cocktails
+          <span class="cluster cluster-midtown">Midtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=The+Patterson+House+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
+        <li>
+          <strong>
+            <a href="https://skullsrainbowroom.com" target="_blank">Skull’s Rainbow Room</a>
+          </strong>
+          – Supper club with jazz &amp; burlesque
+          <span class="cluster cluster-downtown">Downtown</span>
+          <div class="link-block">
+            <a class="btn btn-map" href="https://maps.google.com/?q=Skull%27s+Rainbow+Room+Nashville" target="_blank">Map</a>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -250,10 +602,42 @@
         <h3>Friday, May 1</h3>
         <p><span class="pill">Downtown</span></p>
         <ul>
-          <li>Check in at <strong>Embassy Suites Nashville Downtown</strong>.</li>
-          <li>Explore Broadway and Riverfront Park; rooftop drink at White Limozeen or L27.</li>
-          <li>Dinner at <strong>Husk</strong> or <strong>Yolan</strong>.</li>
-          <li>Evening: <strong>Ani DiFranco at Ryman</strong>, <strong>Grand Ole Opry</strong>, or <strong>Nashville Symphony</strong>.</li>
+          <li>
+            Check in at
+            <strong>
+              <a href="https://www.hilton.com/en/hotels/bnaemes-embassy-suites-nashville-downtown/" target="_blank">
+                Embassy Suites Nashville Downtown
+              </a>
+            </strong>.
+          </li>
+          <li>
+            Explore Broadway and
+            <strong>
+              <a href="https://www.nashville.gov/departments/parks-and-recreation/parks/riverfront-park" target="_blank">
+                Riverfront Park
+              </a>
+            </strong>;
+            rooftop drink at
+            <strong>
+              <a href="https://www.whitelimozeen.com" target="_blank">White Limozeen</a>
+            </strong>
+            or
+            <strong>
+              <a href="https://www.l27nashville.com" target="_blank">L27 Rooftop Lounge</a>
+            </strong>.
+          </li>
+          <li>
+            Dinner at
+            <strong><a href="https://husknashville.com" target="_blank">Husk</a></strong>
+            or
+            <strong><a href="https://yolannashville.com" target="_blank">Yolan</a></strong>.
+          </li>
+          <li>
+            Evening:
+            <strong><a href="https://www.ryman.com" target="_blank">Ani DiFranco at the Ryman</a></strong>,
+            <strong><a href="https://www.opry.com" target="_blank">Grand Ole Opry</a></strong>, or
+            <strong><a href="https://www.nashvillesymphony.org" target="_blank">Nashville Symphony</a></strong>.
+          </li>
         </ul>
       </div>
 
@@ -261,11 +645,32 @@
         <h3>Saturday, May 2</h3>
         <p><span class="pill">Outskirts</span><span class="pill">Midtown</span><span class="pill">Downtown</span></p>
         <ul>
-          <li>Breakfast at <strong>The Loveless Café</strong>.</li>
-          <li>Visit <strong>Cheekwood Estate & Gardens</strong>.</li>
-          <li>Afternoon at <strong>Country Music Hall of Fame</strong> & <strong>RCA Studio B</strong>.</li>
-          <li>Dinner at <strong>The Catbird Seat</strong> (chef’s table).</li>
-          <li>Evening: <strong>Florence + The Machine</strong> (Bridgestone) or <strong>Bailey Zimmerman</strong> (Ascend Amphitheater).</li>
+          <li>
+            Breakfast at
+            <strong><a href="https://lovelesscafe.com" target="_blank">The Loveless Café</a></strong>.
+          </li>
+          <li>
+            Visit
+            <strong><a href="https://cheekwood.org" target="_blank">Cheekwood Estate &amp; Gardens</a></strong>.
+          </li>
+          <li>
+            Afternoon at
+            <strong><a href="https://www.countrymusichalloffame.org" target="_blank">Country Music Hall of Fame</a></strong>
+            &amp;
+            <strong><a href="https://studiob.org" target="_blank">RCA Studio B</a></strong>.
+          </li>
+          <li>
+            Dinner at
+            <strong><a href="https://thecatbirdseatrestaurant.com" target="_blank">The Catbird Seat</a></strong>
+            (chef’s table).
+          </li>
+          <li>
+            Evening:
+            <strong><a href="https://www.bridgestonearena.com" target="_blank">Florence + The Machine</a></strong>
+            (Bridgestone) or
+            <strong><a href="https://www.ascendamphitheater.com" target="_blank">Bailey Zimmerman</a></strong>
+            (Ascend Amphitheater).
+          </li>
         </ul>
       </div>
 
@@ -273,11 +678,37 @@
         <h3>Sunday, May 3</h3>
         <p><span class="pill">12South</span><span class="pill">Midtown</span><span class="pill">Downtown</span></p>
         <ul>
-          <li>Brunch at <strong>Henrietta Red</strong> or <strong>Butcher & Bee</strong>.</li>
-          <li>Explore the <strong>12South</strong> neighborhood (murals, boutiques, coffee).</li>
-          <li>Visit <strong>Centennial Park</strong> & <strong>The Parthenon</strong>.</li>
-          <li>Dinner at <strong>Bastion</strong> or <strong>Locust</strong>.</li>
-          <li>Low‑key live music at <strong>3rd & Lindsley</strong> or <strong>The Basement</strong>.</li>
+          <li>
+            Brunch at
+            <strong><a href="https://henriettared.com" target="_blank">Henrietta Red</a></strong>
+            or
+            <strong><a href="https://butcherandbee.com/nashville" target="_blank">Butcher &amp; Bee</a></strong>.
+          </li>
+          <li>
+            Explore the
+            <strong><a href="https://www.visitmusiccity.com/neighborhoods/12south" target="_blank">12South</a></strong>
+            neighborhood (murals, boutiques, coffee).
+          </li>
+          <li>
+            Visit
+            <strong>
+              <a href="https://www.nashville.gov/departments/parks-and-recreation/parthenon" target="_blank">
+                Centennial Park &amp; The Parthenon
+              </a>
+            </strong>.
+          </li>
+          <li>
+            Dinner at
+            <strong><a href="https://bastionnashville.com" target="_blank">Bastion</a></strong>
+            or
+            <strong><a href="https://locustnashville.com" target="_blank">Locust</a></strong>.
+          </li>
+          <li>
+            Low‑key live music at
+            <strong><a href="https://3rdandlindsley.com" target="_blank">3rd &amp; Lindsley</a></strong>
+            or
+            <strong><a href="https://thebasementnashville.com" target="_blank">The Basement</a></strong>.
+          </li>
         </ul>
       </div>
 
@@ -285,9 +716,23 @@
         <h3>Monday, May 4</h3>
         <p><span class="pill">Downtown</span></p>
         <ul>
-          <li>Coffee at <strong>Frothy Monkey</strong>.</li>
-          <li>Walk along <strong>Riverfront Park</strong>.</li>
-          <li>Pick up <strong>Goo Goo Clusters</strong> and depart.</li>
+          <li>
+            Coffee at
+            <strong><a href="https://frothymonkey.com" target="_blank">Frothy Monkey</a></strong>.
+          </li>
+          <li>
+            Walk along
+            <strong>
+              <a href="https://www.nashville.gov/departments/parks-and-recreation/parks/riverfront-park" target="_blank">
+                Riverfront Park
+              </a>
+            </strong>.
+          </li>
+          <li>
+            Pick up
+            <strong><a href="https://googoo.com" target="_blank">Goo Goo Clusters</a></strong>
+            and depart.
+          </li>
         </ul>
       </div>
     </section>
@@ -331,7 +776,6 @@
 ></script>
 
 <script>
-  // Basic map centered on downtown Nashville
   const map = L.map('map').setView([36.160, -86.78], 12.5);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -339,7 +783,6 @@
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  // Simple colored icon factory
   function coloredIcon(color) {
     return L.divIcon({
       className: 'custom-marker',
@@ -356,64 +799,271 @@
     attraction: '#4b5563'
   };
 
-  // Embassy Suites Nashville Downtown (approximate)
   const embassySuites = {
     name: 'Embassy Suites by Hilton Nashville Downtown',
     coords: [36.1579, -86.7775],
     type: 'hotel',
-    cluster: 'Downtown'
+    cluster: 'Downtown',
+    website: 'https://www.hilton.com/en/hotels/bnaemes-embassy-suites-nashville-downtown/',
+    mapUrl: 'https://maps.google.com/?q=Embassy+Suites+Nashville+Downtown'
   };
 
   const places = [
     // Attractions
-    { name: 'Ryman Auditorium', coords: [36.1615, -86.7785], type: 'attraction', cluster: 'Downtown' },
-    { name: 'Country Music Hall of Fame & Museum', coords: [36.1580, -86.7765], type: 'attraction', cluster: 'Downtown' },
-    { name: 'RCA Studio B', coords: [36.1515, -86.7890], type: 'attraction', cluster: 'Downtown' },
-    { name: 'Johnny Cash Museum', coords: [36.1603, -86.7760], type: 'attraction', cluster: 'Downtown' },
-    { name: 'Grand Ole Opry House', coords: [36.2060, -86.6920], type: 'event', cluster: 'Outskirts' },
-    { name: 'The Parthenon (Centennial Park)', coords: [36.1497, -86.8133], type: 'attraction', cluster: 'Midtown' },
-    { name: 'Cheekwood Estate & Gardens', coords: [36.0865, -86.8740], type: 'attraction', cluster: 'Outskirts' },
-    { name: 'Belle Meade Historic Site & Winery', coords: [36.1040, -86.8689], type: 'attraction', cluster: 'Outskirts' },
-    { name: 'Andrew Jackson’s Hermitage', coords: [36.2150, -86.6120], type: 'attraction', cluster: 'Outskirts' },
-    { name: 'Riverfront Park', coords: [36.1610, -86.7720], type: 'attraction', cluster: 'Downtown' },
+    {
+      name: 'Ryman Auditorium',
+      coords: [36.1615, -86.7785],
+      type: 'attraction',
+      cluster: 'Downtown',
+      website: 'https://www.ryman.com',
+      mapUrl: 'https://maps.google.com/?q=Ryman+Auditorium+Nashville'
+    },
+    {
+      name: 'Country Music Hall of Fame & Museum',
+      coords: [36.1580, -86.7765],
+      type: 'attraction',
+      cluster: 'Downtown',
+      website: 'https://www.countrymusichalloffame.org',
+      mapUrl: 'https://maps.google.com/?q=Country+Music+Hall+of+Fame+Nashville'
+    },
+    {
+      name: 'RCA Studio B',
+      coords: [36.1515, -86.7890],
+      type: 'attraction',
+      cluster: 'Downtown',
+      website: 'https://studiob.org',
+      mapUrl: 'https://maps.google.com/?q=RCA+Studio+B+Nashville'
+    },
+    {
+      name: 'Johnny Cash Museum',
+      coords: [36.1603, -86.7760],
+      type: 'attraction',
+      cluster: 'Downtown',
+      website: 'https://www.johnnycashmuseum.com',
+      mapUrl: 'https://maps.google.com/?q=Johnny+Cash+Museum+Nashville'
+    },
+    {
+      name: 'Grand Ole Opry House',
+      coords: [36.2060, -86.6920],
+      type: 'event',
+      cluster: 'Outskirts',
+      website: 'https://www.opry.com',
+      mapUrl: 'https://maps.google.com/?q=Grand+Ole+Opry+House+Nashville'
+    },
+    {
+      name: 'The Parthenon (Centennial Park)',
+      coords: [36.1497, -86.8133],
+      type: 'attraction',
+      cluster: 'Midtown',
+      website: 'https://www.nashville.gov/departments/parks-and-recreation/parthenon',
+      mapUrl: 'https://maps.google.com/?q=The+Parthenon+Nashville'
+    },
+    {
+      name: 'Cheekwood Estate & Gardens',
+      coords: [36.0865, -86.8740],
+      type: 'attraction',
+      cluster: 'Outskirts',
+      website: 'https://cheekwood.org',
+      mapUrl: 'https://maps.google.com/?q=Cheekwood+Estate+and+Gardens+Nashville'
+    },
+    {
+      name: 'Belle Meade Historic Site & Winery',
+      coords: [36.1040, -86.8689],
+      type: 'attraction',
+      cluster: 'Outskirts',
+      website: 'https://bellemeadeplantation.com',
+      mapUrl: 'https://maps.google.com/?q=Belle+Meade+Historic+Site+Nashville'
+    },
+    {
+      name: 'Andrew Jackson’s Hermitage',
+      coords: [36.2150, -86.6120],
+      type: 'attraction',
+      cluster: 'Outskirts',
+      website: 'https://thehermitage.com',
+      mapUrl: 'https://maps.google.com/?q=Andrew+Jackson%27s+Hermitage+Nashville'
+    },
+    {
+      name: 'Riverfront Park',
+      coords: [36.1610, -86.7720],
+      type: 'attraction',
+      cluster: 'Downtown',
+      website: 'https://www.nashville.gov/departments/parks-and-recreation/parks/riverfront-park',
+      mapUrl: 'https://maps.google.com/?q=Riverfront+Park+Nashville'
+    },
 
     // Event venues
-    { name: 'Ascend Amphitheater', coords: [36.1587, -86.7706], type: 'event', cluster: 'Downtown' },
-    { name: 'Schermerhorn Symphony Center', coords: [36.1590, -86.7760], type: 'event', cluster: 'Downtown' },
-    { name: 'Bridgestone Arena', coords: [36.1592, -86.7785], type: 'event', cluster: 'Downtown' },
-    { name: '3rd & Lindsley', coords: [36.1527, -86.7768], type: 'event', cluster: 'Downtown' },
-    { name: 'The Basement', coords: [36.1425, -86.7765], type: 'event', cluster: 'Downtown' },
-    { name: 'Zanies Comedy Club', coords: [36.1335, -86.7910], type: 'event', cluster: '12South' },
+    {
+      name: 'Ascend Amphitheater',
+      coords: [36.1587, -86.7706],
+      type: 'event',
+      cluster: 'Downtown',
+      website: 'https://www.ascendamphitheater.com',
+      mapUrl: 'https://maps.google.com/?q=Ascend+Amphitheater+Nashville'
+    },
+    {
+      name: 'Schermerhorn Symphony Center',
+      coords: [36.1590, -86.7760],
+      type: 'event',
+      cluster: 'Downtown',
+      website: 'https://www.nashvillesymphony.org',
+      mapUrl: 'https://maps.google.com/?q=Schermerhorn+Symphony+Center+Nashville'
+    },
+    {
+      name: 'Bridgestone Arena',
+      coords: [36.1592, -86.7785],
+      type: 'event',
+      cluster: 'Downtown',
+      website: 'https://www.bridgestonearena.com',
+      mapUrl: 'https://maps.google.com/?q=Bridgestone+Arena+Nashville'
+    },
+    {
+      name: '3rd & Lindsley',
+      coords: [36.1527, -86.7768],
+      type: 'event',
+      cluster: 'Downtown',
+      website: 'https://3rdandlindsley.com',
+      mapUrl: 'https://maps.google.com/?q=3rd+and+Lindsley+Nashville'
+    },
+    {
+      name: 'The Basement',
+      coords: [36.1425, -86.7765],
+      type: 'event',
+      cluster: 'Downtown',
+      website: 'https://thebasementnashville.com',
+      mapUrl: 'https://maps.google.com/?q=The+Basement+Nashville'
+    },
+    {
+      name: 'Zanies Comedy Club',
+      coords: [36.1335, -86.7910],
+      type: 'event',
+      cluster: '12South',
+      website: 'https://www.zanies.com',
+      mapUrl: 'https://maps.google.com/?q=Zanies+Comedy+Club+Nashville'
+    },
 
-    // Restaurants (chef-driven & regional)
-    { name: 'The Catbird Seat', coords: [36.1510, -86.7930], type: 'restaurant', cluster: 'Midtown' },
-    { name: 'Yolan', coords: [36.1585, -86.7755], type: 'restaurant', cluster: 'Downtown' },
-    { name: 'Kayne Prime', coords: [36.1545, -86.7835], type: 'restaurant', cluster: 'Midtown' },
-    { name: 'Husk', coords: [36.1555, -86.7705], type: 'restaurant', cluster: 'Downtown' },
-    { name: 'Locust', coords: [36.1365, -86.7890], type: 'restaurant', cluster: '12South' },
-    { name: 'Bastion', coords: [36.1338, -86.7645], type: 'restaurant', cluster: '12South' },
-    { name: 'The Loveless Café', coords: [36.0470, -86.9960], type: 'restaurant', cluster: 'Outskirts' },
-    { name: 'Arnold’s Country Kitchen', coords: [36.1518, -86.7810], type: 'restaurant', cluster: 'Downtown' },
-    { name: 'Prince’s Hot Chicken', coords: [36.1800, -86.7390], type: 'restaurant', cluster: 'Outskirts' },
-    { name: 'Hattie B’s Hot Chicken (Midtown)', coords: [36.1510, -86.7945], type: 'restaurant', cluster: 'Midtown' },
-    { name: 'The Patterson House', coords: [36.1518, -86.7938], type: 'restaurant', cluster: 'Midtown' },
-    { name: 'Skull’s Rainbow Room', coords: [36.1620, -86.7765], type: 'restaurant', cluster: 'Downtown' }
+    // Restaurants
+    {
+      name: 'The Catbird Seat',
+      coords: [36.1510, -86.7930],
+      type: 'restaurant',
+      cluster: 'Midtown',
+      website: 'https://thecatbirdseatrestaurant.com',
+      mapUrl: 'https://maps.google.com/?q=The+Catbird+Seat+Nashville'
+    },
+    {
+      name: 'Yolan',
+      coords: [36.1585, -86.7755],
+      type: 'restaurant',
+      cluster: 'Downtown',
+      website: 'https://yolannashville.com',
+      mapUrl: 'https://maps.google.com/?q=Yolan+Nashville'
+    },
+    {
+      name: 'Kayne Prime',
+      coords: [36.1545, -86.7835],
+      type: 'restaurant',
+      cluster: 'Midtown',
+      website: 'https://kayneprime.com',
+      mapUrl: 'https://maps.google.com/?q=Kayne+Prime+Nashville'
+    },
+    {
+      name: 'Husk',
+      coords: [36.1555, -86.7705],
+      type: 'restaurant',
+      cluster: 'Downtown',
+      website: 'https://husknashville.com',
+      mapUrl: 'https://maps.google.com/?q=Husk+Nashville'
+    },
+    {
+      name: 'Locust',
+      coords: [36.1365, -86.7890],
+      type: 'restaurant',
+      cluster: '12South',
+      website: 'https://locustnashville.com',
+      mapUrl: 'https://maps.google.com/?q=Locust+Nashville'
+    },
+    {
+      name: 'Bastion',
+      coords: [36.1338, -86.7645],
+      type: 'restaurant',
+      cluster: '12South',
+      website: 'https://bastionnashville.com',
+      mapUrl: 'https://maps.google.com/?q=Bastion+Nashville'
+    },
+    {
+      name: 'The Loveless Café',
+      coords: [36.0470, -86.9960],
+      type: 'restaurant',
+      cluster: 'Outskirts',
+      website: 'https://lovelesscafe.com',
+      mapUrl: 'https://maps.google.com/?q=Loveless+Cafe+Nashville'
+    },
+    {
+      name: 'Arnold’s Country Kitchen',
+      coords: [36.1518, -86.7810],
+      type: 'restaurant',
+      cluster: 'Downtown',
+      website: 'https://arnoldscountrykitchen.com',
+      mapUrl: 'https://maps.google.com/?q=Arnold%27s+Country+Kitchen+Nashville'
+    },
+    {
+      name: 'Prince’s Hot Chicken',
+      coords: [36.1800, -86.7390],
+      type: 'restaurant',
+      cluster: 'Outskirts',
+      website: 'https://princeshotchicken.com',
+      mapUrl: 'https://maps.google.com/?q=Prince%27s+Hot+Chicken+Nashville'
+    },
+    {
+      name: 'Hattie B’s Hot Chicken (Midtown)',
+      coords: [36.1510, -86.7945],
+      type: 'restaurant',
+      cluster: 'Midtown',
+      website: 'https://hattieb.com',
+      mapUrl: 'https://maps.google.com/?q=Hattie+B%27s+Hot+Chicken+Midtown+Nashville'
+    },
+    {
+      name: 'The Patterson House',
+      coords: [36.1518, -86.7938],
+      type: 'restaurant',
+      cluster: 'Midtown',
+      website: 'https://thepattersonnashville.com',
+      mapUrl: 'https://maps.google.com/?q=The+Patterson+House+Nashville'
+    },
+    {
+      name: 'Skull’s Rainbow Room',
+      coords: [36.1620, -86.7765],
+      type: 'restaurant',
+      cluster: 'Downtown',
+      website: 'https://skullsrainbowroom.com',
+      mapUrl: 'https://maps.google.com/?q=Skull%27s+Rainbow+Room+Nashville'
+    }
   ];
 
-  // Add hotel marker
+  function buildPopupContent(place) {
+    let typeLabel = place.type.charAt(0).toUpperCase() + place.type.slice(1);
+    return `
+      <div>
+        <strong>${place.name}</strong><br/>
+        ${typeLabel} • ${place.cluster}<br/>
+        <div class="popup-links">
+          <a class="btn btn-website" href="${place.website}" target="_blank">Website</a><br/>
+          <a class="btn btn-map" href="${place.mapUrl}" target="_blank">Map</a>
+        </div>
+      </div>
+    `;
+  }
+
+  // Hotel marker
   L.marker(embassySuites.coords, {
     icon: coloredIcon(colors.hotel)
-  }).addTo(map).bindPopup('<strong>' + embassySuites.name + '</strong><br/>Base for the weekend (Downtown).');
+  }).addTo(map).bindPopup(buildPopupContent(embassySuites));
 
-  // Add all other markers
+  // Other markers
   places.forEach(p => {
     const iconColor = colors[p.type] || '#4b5563';
     const marker = L.marker(p.coords, { icon: coloredIcon(iconColor) }).addTo(map);
-    marker.bindPopup(
-      '<strong>' + p.name + '</strong><br/>' +
-      p.type.charAt(0).toUpperCase() + p.type.slice(1) +
-      ' • Cluster: ' + p.cluster
-    );
+    marker.bindPopup(buildPopupContent(p));
   });
 </script>
 </body>
